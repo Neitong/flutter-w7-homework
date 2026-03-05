@@ -24,7 +24,10 @@ class SongRepositoryRemote implements SongRepository {
 
   @override
   Song? fetchSongById(String id) {
-    final songs = fetchSongs();
-    return songs.firstWhere((song) => song.id == id);
+    try {
+      return fetchSongs().firstWhere((song) => song.id == id);
+    } catch (_) {
+      return null;
+    }
   }
 }

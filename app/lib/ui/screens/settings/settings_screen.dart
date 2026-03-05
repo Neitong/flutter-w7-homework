@@ -38,7 +38,7 @@ class SettingsScreen extends StatelessWidget {
                     themeColor: theme,
                     isSelected: theme == settingsState.theme,
                     onTap: (value) {
-                      settingsState.changeTheme(theme);
+                      settingsState.changeTheme(value);
                     },
                   ),
                 )
