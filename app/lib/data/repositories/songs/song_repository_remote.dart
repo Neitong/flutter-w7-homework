@@ -5,7 +5,7 @@ import 'song_repository.dart';
 
 class SongRepositoryRemote implements SongRepository {
   @override
-  List<Song> fetchSongs() {
+  Future<List<Song>>  fetchSongs() async {
     return [
       Song(
         id: '1',
@@ -23,11 +23,8 @@ class SongRepositoryRemote implements SongRepository {
   }
 
   @override
-  Song? fetchSongById(String id) {
-    try {
-      return fetchSongs().firstWhere((song) => song.id == id);
-    } catch (_) {
-      return null;
-    }
+  Future<Song?> fetchSongById(String id) async{
+    final songs =  await fetchSongs();
+    return songs.firstWhere((song) => song.id == id);
   }
 }
